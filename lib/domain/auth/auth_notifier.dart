@@ -17,10 +17,7 @@ class AuthNotifier extends StateNotifier<AuthenticationState> {
           await supabase.auth.signUp(email: email, password: password);
 
       state = AuthenticationState.authenticated(response as UserModel);
-      await posthog.capture(eventName: 'user_signed_up', properties: {
-        'email': email,
-        'user_id': response.user!.id,
-      });
+
       AppLogger.logInfo(
         'User signed up: ${response.user!.email}',
       );
@@ -29,15 +26,6 @@ class AuthNotifier extends StateNotifier<AuthenticationState> {
       AppLogger.logError('FAIL SIGNIN', e.toString());
     }
   }
-  // Future<void> signIn(String email, String password) async {
-  //   state = AuthState.loading();
-  //   try {
-  //     final user = await _authRepository.signIn(email, password);
-  //     state = AuthState.authenticated(user!);
-  //   } catch (e) {
-  //     state = AuthState.error(e.toString());
-  //   }
-  // }
 
   Future<void> signOut() async {
     try {
