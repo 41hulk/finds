@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1027437730155",
+    "project_id": "finds-b41c3",
+    "storage_bucket": "finds-b41c3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1027437730155:android:36de552a2b3c0ad2d1542e",
+        "android_client_info": {
+          "package_name": "com.ntare.finds"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD1qooPueO6i82mEQg5rGEjghvo4SdQ834"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -32,7 +32,11 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
             password: _passwordController.text,
           );
     } catch (e) {
-      print(e);
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(e.toString()),
+        ),
+      );
     }
   }
 
