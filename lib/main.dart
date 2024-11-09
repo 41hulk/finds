@@ -1,17 +1,13 @@
 import 'package:another_flutter_splash_screen/another_flutter_splash_screen.dart';
-
-import 'package:finds/screens/auth/signUp_screen.dart';
+import 'package:finds/screens/auth/signup_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(
-    const ProviderScope(
-      child: FindsApp(),
-    ),
+    const FindsApp(),
   );
 }
 
