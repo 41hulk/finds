@@ -1,6 +1,5 @@
 import 'package:elevarm_ui/elevarm_ui.dart';
 import 'package:finds/provider/auth_provider.dart';
-import 'package:finds/screens/auth/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -75,11 +74,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       ),
                     ),
                     onTap: () {
-                      // Navigator.of(context).pushReplacement(
-                      //   MaterialPageRoute(
-                      //     builder: (context) => const LoginScreen(),
-                      //   ),
-                      // );
                       Navigator.pushReplacementNamed(context, '/login');
                     },
                   ),

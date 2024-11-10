@@ -80,7 +80,6 @@ class _LoginScreenState extends State<LoginScreen> {
                             email: _emailController.text,
                             password: _passwordController.text,
                           );
-                          print('Login success');
                         }
                       } catch (e) {
                         ScaffoldMessenger.of(context).showSnackBar(
