@@ -9,7 +9,11 @@ class AuthProvider with ChangeNotifier {
   UserModel? _user;
   UserModel? get user => _user;
 
-  Future<void> signUp(String username, String email, String password) async {
+  Future<void> signUp({
+    required String username,
+    required String email,
+    required String password,
+  }) async {
     try {
       final userCredential = await firebaseAuth.createUserWithEmailAndPassword(
         email: email,
@@ -34,7 +38,7 @@ class AuthProvider with ChangeNotifier {
     }
   }
 
-  Future<void> signIn(String email, String password) async {
+  Future<void> signIn({required String email, required String password}) async {
     try {
       final userCredential = await firebaseAuth.signInWithEmailAndPassword(
         email: email,
