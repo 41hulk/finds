@@ -45,8 +45,8 @@ dependencies:
   cloud_firestore: ^5.4.4
   firebase_storage: ^12.3.4
   firebase_auth: ^5.3.1
-  elevarm_ui: ^0.10.8
   google_fonts: ^6.2.1
+  elevarm_ui: ^0.10.8
 
 flutter_launcher_icons:
   android: "launcher_icon"

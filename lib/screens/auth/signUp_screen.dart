@@ -75,11 +75,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       ),
                     ),
                     onTap: () {
-                      Navigator.of(context).pushReplacement(
-                        MaterialPageRoute(
-                          builder: (context) => const LoginScreen(),
-                        ),
-                      );
+                      // Navigator.of(context).pushReplacement(
+                      //   MaterialPageRoute(
+                      //     builder: (context) => const LoginScreen(),
+                      //   ),
+                      // );
+                      Navigator.pushReplacementNamed(context, '/login');
                     },
                   ),
                   const SizedBox(height: 30),

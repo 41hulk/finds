@@ -36,7 +36,7 @@ class FindsApp extends StatelessWidget {
           '/login': (context) => const LoginScreen(),
         },
         home: FlutterSplashScreen.fadeIn(
-          nextScreen: const SignUpScreen(),
+          nextScreen: const LoginScreen(),
           duration: const Duration(milliseconds: 4000),
           backgroundColor: Colors.white,
           childWidget: const Center(

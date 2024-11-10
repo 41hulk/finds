@@ -66,7 +66,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                     onTap: () {
-                      Navigator.pushNamed(context, '/signup');
+                      Navigator.pushReplacementNamed(context, '/signup');
                     },
                   ),
                   const SizedBox(height: 30),
@@ -80,6 +80,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             email: _emailController.text,
                             password: _passwordController.text,
                           );
+                          print('Login success');
                         }
                       } catch (e) {
                         ScaffoldMessenger.of(context).showSnackBar(
