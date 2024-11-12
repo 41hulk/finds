@@ -58,7 +58,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   const SizedBox(height: 32),
                   InkWell(
                     child: Text(
-                      'I don\'t have an account, Sign Up',
+                      'You don\'t have an account?, Sign Up',
                       style: GoogleFonts.poppins(
                         fontSize: 14,
                         fontWeight: FontWeight.w400,
