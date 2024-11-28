@@ -1,56 +1,44 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:finds/config/http.dart';
 import 'package:finds/models/user.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class AuthProvider with ChangeNotifier {
-  final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
-  final FirebaseFirestore firestore = FirebaseFirestore.instance;
-  UserModel? _user;
-  UserModel? get user => _user;
+  bool loading = false;
+  bool isBack = false;
 
-  Future<void> signUp({
+  UserModel? _user;
+
+  // AppLogger appLogger = AppLogger();
+  NetworHandler networHandler = NetworHandler();
+
+  Future<dynamic> signUp({
     required String username,
     required String email,
     required String password,
+    required String nationality,
+    // required UserModel data
   }) async {
     try {
-      final userCredential = await firebaseAuth.createUserWithEmailAndPassword(
+      loading = true;
+      _user = UserModel(
+        username: username,
         email: email,
         password: password,
+        nationality: nationality,
       );
 
-      _user = UserModel(
-          uid: userCredential.user!.uid,
-          email: userCredential.user!.email!,
-          name: username,
-          photoUrl: '',
-          createdAt: DateTime.now());
-
-      await firestore
-          .collection('users')
-          .doc(userCredential.user!.uid)
-          .set(_user!.toMap());
-
+      var res = await networHandler.post('/auth/register', _user!.toJson());
+      loading = false;
       notifyListeners();
+      return res;
     } catch (e) {
-      rethrow;
+      notifyListeners();
+      return e;
     }
   }
 
   Future<void> signIn({required String email, required String password}) async {
     try {
-      final userCredential = await firebaseAuth.signInWithEmailAndPassword(
-        email: email,
-        password: password,
-      );
-
-      final userData = await firestore
-          .collection('users')
-          .doc(userCredential.user!.uid)
-          .get();
-
-      _user = UserModel.fromMap(userData.data()!);
       notifyListeners();
     } catch (e) {
       rethrow;
@@ -68,8 +56,6 @@ class AuthProvider with ChangeNotifier {
   }
 
   Future<void> signOut() async {
-    await firebaseAuth.signOut();
-    _user = null;
     notifyListeners();
   }
 }

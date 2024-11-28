@@ -1,8 +1,13 @@
+import 'dart:convert';
 import 'package:elevarm_ui/elevarm_ui.dart';
+import 'package:finds/config/shared_preferences.dart';
 import 'package:finds/provider/auth_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:top_snackbar_flutter/custom_snack_bar.dart';
+import 'package:top_snackbar_flutter/tap_bounce_container.dart';
+import 'package:top_snackbar_flutter/top_snack_bar.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -16,18 +21,52 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   final _usernameController = TextEditingController();
+  final _nationalityController = TextEditingController();
 
   @override
   void dispose() {
     _emailController.dispose();
     _passwordController.dispose();
     _usernameController.dispose();
+    _nationalityController.dispose();
     super.dispose();
+  }
+
+  Future<dynamic> signUpImpl() async {
+    try {
+      if (_formKey.currentState!.validate()) {
+        final authProvider = Provider.of<AuthProvider>(context, listen: false);
+        var res = await authProvider.signUp(
+            username: _usernameController.text,
+            email: _emailController.text,
+            password: _passwordController.text,
+            nationality: _nationalityController.text);
+        var resBody = json.decode(res.body);
+        print("decodeeeeeeeed, $resBody");
+
+        if (res.statusCode == 200 || res.statusCode == 201) {
+          print(resBody['access_token']);
+          storeUserData(resBody);
+          //go to nav here
+        }
+        if (res.statusCode == 409) {
+          showTopSnackBar(
+            Overlay.of(context),
+            CustomSnackBar.error(message: resBody['message']),
+          );
+        }
+      }
+    } catch (er) {
+      showTopSnackBar(
+        Overlay.of(context),
+        const CustomSnackBar.error(message: "An error occured"),
+      );
+    }
   }
 
   @override
   Widget build(BuildContext context) {
-    final authProvider = Provider.of<AuthProvider>(context);
+    // final authProvider = Provider.of<AuthProvider>(context);
     return Scaffold(
       body: SafeArea(
         child: Center(
@@ -38,13 +77,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
               child: Column(
                 children: [
                   Text(
-                    'Sign Up',
+                    'Get Started !🚀',
                     style: GoogleFonts.poppins(
                       fontSize: 24,
                       fontWeight: FontWeight.w500,
                     ),
                   ),
-                  const SizedBox(height: 16),
+                  const SizedBox(height: 30),
                   ElevarmTextInputField(
                     label: 'Username',
                     hintText: 'guyntare',
@@ -62,6 +101,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     hintText: 'password',
                     obscureText: true,
                     controller: _passwordController,
+                  ),
+                  const SizedBox(height: 16),
+                  ElevarmTextInputField(
+                    label: 'Nationality',
+                    hintText: 'Rwandan',
+                    controller: _nationalityController,
                   ),
                   const SizedBox(height: 32),
                   InkWell(
@@ -82,21 +127,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     text: 'Sign Up',
                     height: 40,
                     onPressed: () {
-                      try {
-                        if (_formKey.currentState!.validate()) {
-                          authProvider.signUp(
-                            username: _usernameController.text,
-                            email: _emailController.text,
-                            password: _passwordController.text,
-                          );
-                        }
-                      } catch (e) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            content: Text(e.toString()),
-                          ),
-                        );
-                      }
+                      signUpImpl();
                     },
                   ),
                 ],

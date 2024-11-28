@@ -13,12 +13,12 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
-  final _emailController = TextEditingController();
+  final _usernameController = TextEditingController();
   final _passwordController = TextEditingController();
 
   @override
   void dispose() {
-    _emailController.dispose();
+    _usernameController.dispose();
     _passwordController.dispose();
     super.dispose();
   }
@@ -36,17 +36,17 @@ class _LoginScreenState extends State<LoginScreen> {
               child: Column(
                 children: [
                   Text(
-                    'Sign Up',
+                    'Login !🚀',
                     style: GoogleFonts.poppins(
                       fontSize: 24,
                       fontWeight: FontWeight.w500,
                     ),
                   ),
-                  const SizedBox(height: 16),
+                  const SizedBox(height: 30),
                   ElevarmTextInputField(
-                    label: 'Email',
-                    hintText: 'guy@41labs.co',
-                    controller: _emailController,
+                    label: 'Username',
+                    hintText: 'guyntare',
+                    controller: _usernameController,
                   ),
                   const SizedBox(height: 16),
                   ElevarmTextInputField(
@@ -77,7 +77,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       try {
                         if (_formKey.currentState!.validate()) {
                           authProvider.signIn(
-                            email: _emailController.text,
+                            email: _usernameController.text,
                             password: _passwordController.text,
                           );
                         }

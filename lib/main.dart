@@ -2,13 +2,10 @@ import 'package:another_flutter_splash_screen/another_flutter_splash_screen.dart
 import 'package:finds/provider/auth_provider.dart';
 import 'package:finds/screens/auth/login_screen.dart';
 import 'package:finds/screens/auth/signup_screen.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
   runApp(
     const FindsApp(),
   );
