@@ -37,16 +37,29 @@ class AuthProvider with ChangeNotifier {
     }
   }
 
-  Future<void> signIn({required String email, required String password}) async {
+  Future<dynamic> signIn(
+      {required String username, required String password}) async {
     try {
+      loading = true;
+      var res = await networHandler.post(
+        '/auth/login',
+        {
+          'username': username,
+          'password': password,
+        },
+      );
+      loading = false;
+      print(res.body);
       notifyListeners();
+      return res;
     } catch (e) {
-      rethrow;
+      print(e);
+      notifyListeners();
+      return e;
     }
-    notifyListeners();
   }
 
-  Future<void> updateProfile(
+  Future<dynamic> updateProfile(
     String? username,
     String? photoUrl,
   ) async {
@@ -55,7 +68,7 @@ class AuthProvider with ChangeNotifier {
     }
   }
 
-  Future<void> signOut() async {
+  Future<dynamic> signOut() async {
     notifyListeners();
   }
 }

@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:top_snackbar_flutter/custom_snack_bar.dart';
-import 'package:top_snackbar_flutter/tap_bounce_container.dart';
 import 'package:top_snackbar_flutter/top_snack_bar.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -126,8 +125,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ElevarmOutlineButton.text(
                     text: 'Sign Up',
                     height: 40,
-                    onPressed: () {
-                      signUpImpl();
+                    onPressed: () async {
+                      await signUpImpl();
                     },
                   ),
                 ],

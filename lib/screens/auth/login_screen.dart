@@ -1,8 +1,13 @@
 import 'package:elevarm_ui/elevarm_ui.dart';
+import 'package:finds/config/shared_preferences.dart';
 import 'package:finds/provider/auth_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:top_snackbar_flutter/custom_snack_bar.dart';
+import 'dart:convert';
+
+import 'package:top_snackbar_flutter/top_snack_bar.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -23,9 +28,34 @@ class _LoginScreenState extends State<LoginScreen> {
     super.dispose();
   }
 
+  Future<dynamic> signInImpl() async {
+    try {
+      if (_formKey.currentState!.validate()) {
+        final authProvider = Provider.of<AuthProvider>(context, listen: false);
+        var res = await authProvider.signIn(
+          username: _usernameController.text,
+          password: _passwordController.text,
+        );
+        var resBody = json.decode(res.body);
+        print("loggedininnnn, $resBody");
+
+        if (res.statusCode == 200 || res.statusCode == 201) {
+          print(resBody['access_token']);
+          storeUserData(resBody);
+          //go to nav here
+        }
+      }
+    } catch (er) {
+      print(er.toString());
+      showTopSnackBar(
+        Overlay.of(context),
+        CustomSnackBar.error(message: er.toString()),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    final authProvider = Provider.of<AuthProvider>(context);
     return Scaffold(
       body: SafeArea(
         child: Center(
@@ -73,21 +103,8 @@ class _LoginScreenState extends State<LoginScreen> {
                   ElevarmOutlineButton.text(
                     text: 'Sign Up',
                     height: 40,
-                    onPressed: () {
-                      try {
-                        if (_formKey.currentState!.validate()) {
-                          authProvider.signIn(
-                            email: _usernameController.text,
-                            password: _passwordController.text,
-                          );
-                        }
-                      } catch (e) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            content: Text(e.toString()),
-                          ),
-                        );
-                      }
+                    onPressed: () async {
+                      await signInImpl();
                     },
                   ),
                 ],

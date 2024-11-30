@@ -6,7 +6,7 @@ import 'package:http/http.dart' as http;
 
 class NetworHandler {
   // String baseUrl = 'http://localhost:3030';
-  String baseUrl = 'http://169.254.93.1:3030';
+  String baseUrl = 'http://169.254.253.214:3030';
 
   Future get(String url) async {
     String? token = await getToken();
