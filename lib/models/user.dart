@@ -1,35 +1,31 @@
 class UserModel {
-  final String uid;
+  final String username;
   final String email;
-  final String name;
-  final String? photoUrl;
-  final DateTime createdAt;
+  final String password;
+  final String nationality;
 
   UserModel({
-    required this.uid,
+    required this.username,
     required this.email,
-    required this.name,
-    this.photoUrl,
-    required this.createdAt,
+    required this.password,
+    required this.nationality,
   });
 
-  Map<String, dynamic> toMap() {
+  Map<String, dynamic> toJson() {
     return {
-      'uid': uid,
+      'username': username,
       'email': email,
-      'name': name,
-      'photoUrl': photoUrl,
-      'createAt': createdAt.toIso8601String(),
+      'password': password,
+      'nationality': nationality,
     };
   }
 
-  factory UserModel.fromMap(Map<String, dynamic> map) {
+  factory UserModel.fromJson(Map<String, dynamic> json) {
     return UserModel(
-      uid: map['uid'],
-      email: map['email'],
-      name: map['name'],
-      photoUrl: map['photoUrl'],
-      createdAt: DateTime.parse(map['createAt']),
+      username: json['username'],
+      email: json['email'],
+      password: json['password'],
+      nationality: json['nationality'],
     );
   }
 }
