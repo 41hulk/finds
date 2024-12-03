@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'explorer_screen.dart';
-import 'listings_screen.dart';
-import 'favorites_screen.dart';
-import 'account_screen.dart';
+import '../explorer/explorer_screen.dart';
+import '../listings/listings_screen.dart';
+import '../favorites/favorites_screen.dart';
+import '../account/account_screen.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -57,4 +56,4 @@ class _MainScreenState extends State<MainScreen> {
       ),
     );
   }
-} 
+}
