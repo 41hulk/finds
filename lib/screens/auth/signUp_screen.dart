@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:elevarm_ui/elevarm_ui.dart';
 import 'package:finds/config/shared_preferences.dart';
 import 'package:finds/provider/auth_provider.dart';
+import 'package:finds/screens/main/main_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -47,6 +48,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
           print(resBody['access_token']);
           storeUserData(resBody);
           //go to nav here
+        }
+        if (mounted) {
+          Navigator.of(context).pushReplacement(
+            MaterialPageRoute(builder: (context) => const MainScreen()),
+          );
         }
         if (res.statusCode == 409) {
           showTopSnackBar(
