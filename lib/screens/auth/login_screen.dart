@@ -37,16 +37,13 @@ class _LoginScreenState extends State<LoginScreen> {
           password: _passwordController.text,
         );
         var resBody = json.decode(res.body);
-        print("loggedininnnn, $resBody");
 
         if (res.statusCode == 200 || res.statusCode == 201) {
-          print(resBody['access_token']);
           storeUserData(resBody);
           //go to nav here
         }
-      }
+      } 
     } catch (er) {
-      print(er.toString());
       showTopSnackBar(
         Overlay.of(context),
         CustomSnackBar.error(message: er.toString()),
