@@ -8,7 +8,7 @@ import 'package:top_snackbar_flutter/custom_snack_bar.dart';
 import 'dart:convert';
 
 import 'package:top_snackbar_flutter/top_snack_bar.dart';
-import '../main/main_screen.dart';
+import '../navigation/navigation.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -48,7 +48,7 @@ class _LoginScreenState extends State<LoginScreen> {
             );
           }
         }
-      } 
+      }
     } catch (er) {
       showTopSnackBar(
         Overlay.of(context),
@@ -104,7 +104,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   const SizedBox(height: 30),
                   ElevarmOutlineButton.text(
-                    text: 'Sign Up',
+                    text: 'Login',
                     height: 40,
                     onPressed: () async {
                       await signInImpl();

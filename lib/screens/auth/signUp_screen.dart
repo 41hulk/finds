@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:elevarm_ui/elevarm_ui.dart';
 import 'package:finds/config/shared_preferences.dart';
 import 'package:finds/provider/auth_provider.dart';
-import 'package:finds/screens/main/main_screen.dart';
+import 'package:finds/screens/navigation/navigation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';

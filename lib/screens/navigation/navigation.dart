@@ -41,11 +41,11 @@ class _MainScreenState extends State<MainScreen> {
             label: 'Explorer',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.list),
+            icon: Icon(Icons.house),
             label: 'Listings',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.favorite),
+            icon: Icon(Icons.bookmark),
             label: 'Favorites',
           ),
           BottomNavigationBarItem(
