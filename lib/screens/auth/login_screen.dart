@@ -8,6 +8,7 @@ import 'package:top_snackbar_flutter/custom_snack_bar.dart';
 import 'dart:convert';
 
 import 'package:top_snackbar_flutter/top_snack_bar.dart';
+import '../navigation/navigation.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -37,16 +38,18 @@ class _LoginScreenState extends State<LoginScreen> {
           password: _passwordController.text,
         );
         var resBody = json.decode(res.body);
-        print("loggedininnnn, $resBody");
 
         if (res.statusCode == 200 || res.statusCode == 201) {
-          print(resBody['access_token']);
           storeUserData(resBody);
           //go to nav here
+          if (mounted) {
+            Navigator.of(context).pushReplacement(
+              MaterialPageRoute(builder: (context) => const MainScreen()),
+            );
+          }
         }
       }
     } catch (er) {
-      print(er.toString());
       showTopSnackBar(
         Overlay.of(context),
         CustomSnackBar.error(message: er.toString()),
@@ -101,7 +104,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   const SizedBox(height: 30),
                   ElevarmOutlineButton.text(
-                    text: 'Sign Up',
+                    text: 'Login',
                     height: 40,
                     onPressed: () async {
                       await signInImpl();

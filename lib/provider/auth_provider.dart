@@ -49,11 +49,10 @@ class AuthProvider with ChangeNotifier {
         },
       );
       loading = false;
-      print(res.body);
+
       notifyListeners();
       return res;
     } catch (e) {
-      print(e);
       notifyListeners();
       return e;
     }
