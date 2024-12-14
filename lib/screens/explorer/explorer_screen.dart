@@ -7,7 +7,7 @@ class ExplorerScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Scaffold(
       body: Center(
-        child: Text('Explorer Screen'),
+        child: Text('Explorer Screen '),
       ),
     );
   }
