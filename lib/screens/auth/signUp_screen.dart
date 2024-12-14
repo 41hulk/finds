@@ -42,10 +42,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
             password: _passwordController.text,
             nationality: _nationalityController.text);
         var resBody = json.decode(res.body);
-        print("decodeeeeeeeed, $resBody");
 
         if (res.statusCode == 200 || res.statusCode == 201) {
-          print(resBody['access_token']);
           storeUserData(resBody);
           //go to nav here
         }

@@ -23,7 +23,6 @@ class DatabaseHelper {
       );
       return db;
     } catch (e) {
-      print('Error initializing database: $e');
       rethrow;
     }
   }
@@ -36,10 +35,7 @@ class DatabaseHelper {
       await db.execute(
         'CREATE TABLE questions(id TEXT PRIMARY KEY, quiz_id TEXT, question_description TEXT, option1 TEXT, option2 TEXT, option3 TEXT,  correct_answer_index INTEGER)',
       );
-
-      print('print tables successfully created');
     } catch (e) {
-      print('Error creating tables: $e');
       rethrow; // Rethrow the error to propagate it to the caller
     }
   }
