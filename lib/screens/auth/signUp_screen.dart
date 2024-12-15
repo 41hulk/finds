@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'package:elevarm_ui/elevarm_ui.dart';
 import 'package:finds/config/shared_preferences.dart';
 import 'package:finds/provider/auth_provider.dart';
 import 'package:finds/screens/navigation/navigation.dart';
@@ -8,6 +7,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:top_snackbar_flutter/custom_snack_bar.dart';
 import 'package:top_snackbar_flutter/top_snack_bar.dart';
+import 'package:finds/widgets/custom_text_input.dart'; // Import the custom text input
+import 'package:finds/widgets/custom_button.dart'; // Import the custom button
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -87,26 +88,26 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                   ),
                   const SizedBox(height: 30),
-                  ElevarmTextInputField(
+                  CustomTextInput(
                     label: 'Username',
                     hintText: 'guyntare',
                     controller: _usernameController,
                   ),
                   const SizedBox(height: 16),
-                  ElevarmTextInputField(
+                  CustomTextInput(
                     label: 'Email',
                     hintText: 'guy@41labs.co',
                     controller: _emailController,
                   ),
                   const SizedBox(height: 16),
-                  ElevarmTextInputField(
+                  CustomTextInput(
                     label: 'Password',
                     hintText: 'password',
                     obscureText: true,
                     controller: _passwordController,
                   ),
                   const SizedBox(height: 16),
-                  ElevarmTextInputField(
+                  CustomTextInput(
                     label: 'Nationality',
                     hintText: 'Rwandan',
                     controller: _nationalityController,
@@ -126,9 +127,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     },
                   ),
                   const SizedBox(height: 30),
-                  ElevarmOutlineButton.text(
+                  CustomButton(
                     text: 'Sign Up',
-                    height: 40,
                     onPressed: () async {
                       await signUpImpl();
                     },

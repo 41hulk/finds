@@ -1,7 +1,10 @@
 import 'package:another_flutter_splash_screen/another_flutter_splash_screen.dart';
 import 'package:finds/provider/auth_provider.dart';
+import 'package:finds/provider/sensor_provider.dart';
+import 'package:finds/provider/property_provider.dart';
 import 'package:finds/screens/auth/login_screen.dart';
 import 'package:finds/screens/auth/signup_screen.dart';
+import 'package:finds/screens/sensor_display.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -20,6 +23,8 @@ class FindsApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => AuthProvider()),
+        ChangeNotifierProvider(create: (context) => SensorProvider()),
+        ChangeNotifierProvider(create: (context) => PropertyProvider()),
       ],
       child: MaterialApp(
         title: 'Finds app',
@@ -31,6 +36,7 @@ class FindsApp extends StatelessWidget {
         routes: {
           '/signup': (context) => const SignUpScreen(),
           '/login': (context) => const LoginScreen(),
+          '/sensor': (context) => const SensorDisplay(),
         },
         home: FlutterSplashScreen.fadeIn(
           nextScreen: const LoginScreen(),

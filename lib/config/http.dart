@@ -19,6 +19,7 @@ class NetworHandler {
     if (response.statusCode == 200 || response.statusCode == 201) {
       AppLogger.logInfo(response.body);
     }
+    return response.body;
   }
 
   Future post(String url, Map<String, dynamic> body) async {

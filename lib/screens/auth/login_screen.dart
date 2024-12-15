@@ -1,6 +1,6 @@
-import 'package:elevarm_ui/elevarm_ui.dart';
 import 'package:finds/config/shared_preferences.dart';
 import 'package:finds/provider/auth_provider.dart';
+import 'package:finds/screens/sensor_display.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -9,6 +9,8 @@ import 'dart:convert';
 
 import 'package:top_snackbar_flutter/top_snack_bar.dart';
 import '../navigation/navigation.dart';
+import 'package:finds/widgets/custom_text_input.dart'; // Import the custom text input
+import 'package:finds/widgets/custom_button.dart'; // Import the custom button
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -44,7 +46,9 @@ class _LoginScreenState extends State<LoginScreen> {
           //go to nav here
           if (mounted) {
             Navigator.of(context).pushReplacement(
-              MaterialPageRoute(builder: (context) => const MainScreen()),
+              MaterialPageRoute(
+                builder: (context) => const MainScreen(),
+              ),
             );
           }
         }
@@ -76,13 +80,13 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                   const SizedBox(height: 30),
-                  ElevarmTextInputField(
+                  CustomTextInput(
                     label: 'Username',
                     hintText: 'guyntare',
                     controller: _usernameController,
                   ),
                   const SizedBox(height: 16),
-                  ElevarmTextInputField(
+                  CustomTextInput(
                     label: 'Password',
                     hintText: 'password',
                     obscureText: true,
@@ -103,9 +107,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     },
                   ),
                   const SizedBox(height: 30),
-                  ElevarmOutlineButton.text(
+                  CustomButton(
                     text: 'Login',
-                    height: 40,
                     onPressed: () async {
                       await signInImpl();
                     },
