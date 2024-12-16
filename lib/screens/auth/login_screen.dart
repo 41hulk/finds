@@ -1,5 +1,6 @@
 import 'package:finds/config/shared_preferences.dart';
 import 'package:finds/provider/auth_provider.dart';
+import 'package:finds/screens/listings/create_property_screen.dart';
 import 'package:finds/screens/sensor_display.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';

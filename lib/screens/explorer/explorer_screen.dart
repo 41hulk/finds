@@ -20,9 +20,9 @@ class _ExplorerScreenState extends State<ExplorerScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Explorer')),
-      body: const PropertyList(), // Use the PropertyList widget here
+    return const Scaffold(
+      // appBar: AppBar(title: const Text('Explorer')),
+      body: SafeArea(child: PropertyList()), // Use the PropertyList widget here
     );
   }
 }

@@ -2,7 +2,6 @@ import 'package:finds/config/http.dart';
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import '../models/property.dart';
-import 'dart:io';
 
 class PropertyProvider with ChangeNotifier {
   NetworHandler networHandler = NetworHandler();
@@ -26,6 +25,36 @@ class PropertyProvider with ChangeNotifier {
     } finally {
       _isLoading = false;
       notifyListeners();
+    }
+  }
+
+  Future<void> createProperty(Property property) async {
+    try {
+      // final response = await http.post(
+      //   Uri.parse(
+      //       'https://api.example.com/properties'), // Replace with your API URL
+      //   headers: {'Content-Type': 'application/json'},
+      //   body: json.encode({
+      //     'userId': property.userId,
+      //     'name': property.name,
+      //     'description': property.description,
+      //     'images': property.images,
+      //     'pricePerNight': property.pricePerNight,
+      //     'address': property.address,
+      //     'created_at': property.created_at.toIso8601String(),
+      //     'updated_at': property.updated_at.toIso8601String(),
+      //   }),
+      // );
+
+      // if (response.statusCode == 201) {
+      //   // Optionally, fetch properties again to update the list
+      //   await fetchProperties();
+      // } else {
+      //   throw Exception('Failed to create property');
+      // }
+    } catch (e) {
+      print('Error creating property: $e');
+      throw Exception('Failed to create property');
     }
   }
 }
