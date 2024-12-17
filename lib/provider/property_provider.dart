@@ -20,8 +20,7 @@ class PropertyProvider with ChangeNotifier {
       final List<dynamic> data = json.decode(response);
       _properties = data.map((json) => Property.fromJson(json)).toList();
     } catch (e) {
-      print('Error fetching properties: $e'); // Log the error
-      throw Exception('Failed to load properties');
+      throw Exception('Failed to load properties: $e');
     } finally {
       _isLoading = false;
       notifyListeners();
@@ -53,7 +52,6 @@ class PropertyProvider with ChangeNotifier {
       //   throw Exception('Failed to create property');
       // }
     } catch (e) {
-      print('Error creating property: $e');
       throw Exception('Failed to create property');
     }
   }

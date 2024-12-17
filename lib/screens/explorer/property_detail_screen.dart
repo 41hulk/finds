@@ -28,10 +28,10 @@ class PropertyDetailScreen extends StatelessWidget {
                 Text('@${property.user.username}'),
               ],
             ),
-            Text(
-              property.name,
-              style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-            ),
+            // Text(
+            //   property.name,
+            //   style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            // ),
             const SizedBox(height: 8),
             Text(property.description),
             const SizedBox(height: 8),

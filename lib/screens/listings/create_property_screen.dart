@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import '../../provider/property_provider.dart';
-import '../../models/property.dart';
+// import 'package:provider/provider.dart';
+// import '../../provider/property_provider.dart';
+// import '../../models/property.dart';
 
 class CreatePropertyScreen extends StatefulWidget {
   const CreatePropertyScreen({super.key});
