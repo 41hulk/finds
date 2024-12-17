@@ -9,6 +9,10 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 void main() async {
+  FlutterError.onError = (FlutterErrorDetails details) {
+    FlutterError.dumpErrorToConsole(details);
+    runApp(ErrorWidgetClass(details));
+  };
   runApp(
     const FindsApp(),
   );
@@ -47,5 +51,21 @@ class FindsApp extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+class ErrorWidgetClass extends StatelessWidget {
+  final FlutterErrorDetails errorDetails;
+  const ErrorWidgetClass(this.errorDetails, {super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+        title: 'Custom Error Widget',
+        home: Center(
+          child: Text(
+            errorDetails.exceptionAsString(),
+          ),
+        ));
   }
 }
