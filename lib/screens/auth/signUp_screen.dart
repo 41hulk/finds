@@ -22,14 +22,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   final _usernameController = TextEditingController();
-  final _nationalityController = TextEditingController();
 
   @override
   void dispose() {
     _emailController.dispose();
     _passwordController.dispose();
     _usernameController.dispose();
-    _nationalityController.dispose();
+
     super.dispose();
   }
 
@@ -38,10 +37,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
       if (_formKey.currentState!.validate()) {
         final authProvider = Provider.of<AuthProvider>(context, listen: false);
         var res = await authProvider.signUp(
-            username: _usernameController.text,
-            email: _emailController.text,
-            password: _passwordController.text,
-            nationality: _nationalityController.text);
+          username: _usernameController.text,
+          email: _emailController.text,
+          password: _passwordController.text,
+        );
         var resBody = json.decode(res.body);
 
         if (res.statusCode == 200 || res.statusCode == 201) {
@@ -80,12 +79,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
               key: _formKey,
               child: Column(
                 children: [
-                  Text(
+                  const Text(
                     'Get Started !🚀',
-                    style: GoogleFonts.poppins(
-                      fontSize: 24,
-                      fontWeight: FontWeight.w500,
-                    ),
+                    style: TextStyle(fontSize: 25),
                   ),
                   const SizedBox(height: 30),
                   CustomTextInput(
@@ -107,20 +103,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     controller: _passwordController,
                   ),
                   const SizedBox(height: 16),
-                  CustomTextInput(
-                    label: 'Nationality',
-                    hintText: 'Rwandan',
-                    controller: _nationalityController,
-                  ),
-                  const SizedBox(height: 32),
                   InkWell(
-                    child: Text(
-                      'Already have an account? LogIn',
-                      style: GoogleFonts.poppins(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w400,
-                        color: const Color.fromARGB(255, 74, 77, 80),
-                      ),
+                    child: const Text(
+                      'Already have an account? Login',
+                      style: TextStyle(fontSize: 15),
                     ),
                     onTap: () {
                       Navigator.pushReplacementNamed(context, '/login');

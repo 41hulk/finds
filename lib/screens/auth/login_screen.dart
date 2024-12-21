@@ -71,12 +71,9 @@ class _LoginScreenState extends State<LoginScreen> {
               key: _formKey,
               child: Column(
                 children: [
-                  Text(
+                  const Text(
                     'Login !🚀',
-                    style: GoogleFonts.poppins(
-                      fontSize: 24,
-                      fontWeight: FontWeight.w500,
-                    ),
+                    style: TextStyle(fontSize: 25),
                   ),
                   const SizedBox(height: 30),
                   CustomTextInput(
@@ -93,13 +90,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   const SizedBox(height: 32),
                   InkWell(
-                    child: Text(
+                    child: const Text(
                       'You don\'t have an account?, Sign Up',
-                      style: GoogleFonts.poppins(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w400,
-                        color: const Color.fromARGB(255, 74, 77, 80),
-                      ),
+                      style: TextStyle(fontSize: 15),
                     ),
                     onTap: () {
                       Navigator.pushReplacementNamed(context, '/signup');

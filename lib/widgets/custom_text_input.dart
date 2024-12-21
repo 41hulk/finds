@@ -26,7 +26,7 @@ class CustomTextInput extends StatelessWidget {
         labelText: label,
         hintText: hintText,
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8.0),
+          borderRadius: BorderRadius.circular(12.0),
         ),
       ),
     );

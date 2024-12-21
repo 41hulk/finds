@@ -33,9 +33,9 @@ class FindsApp extends StatelessWidget {
         title: 'Finds app',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
-          useMaterial3: true,
-        ),
+            colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
+            useMaterial3: true,
+            fontFamily: 'Gilroy'),
         routes: {
           '/signup': (context) => const SignUpScreen(),
           '/login': (context) => const LoginScreen(),
