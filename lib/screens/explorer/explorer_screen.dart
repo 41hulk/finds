@@ -3,7 +3,6 @@ import 'package:finds/widgets/search_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../provider/property_provider.dart';
-import 'property_list.dart';
 
 class ExplorerScreen extends StatefulWidget {
   const ExplorerScreen({super.key});
