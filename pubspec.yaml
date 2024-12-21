@@ -48,6 +48,8 @@ dependencies:
   fluttertoast: ^8.0.9
   sensors_plus: ^3.0.0
   font_awesome_flutter: ^10.8.0
+  another_carousel_pro: ^1.0.2
+
 
 flutter_launcher_icons:
   android: "launcher_icon"

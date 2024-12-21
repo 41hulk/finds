@@ -7,7 +7,7 @@ class SearchBarAndFilter extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(
-        horizontal: 27,
+        horizontal: 20,
       ),
       child: Row(
         children: [
@@ -32,38 +32,39 @@ class SearchBarAndFilter extends StatelessWidget {
                   children: [
                     Icon(
                       Icons.search,
-                      size: 32,
+                      size: 20,
                     ),
-                    SizedBox(width: 8),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "  Where to?",
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                        SizedBox(
-                          height: 20,
-                          width: 240,
-                          child: TextField(
-                            decoration: InputDecoration(
-                              border: OutlineInputBorder(
-                                borderSide: BorderSide.none,
-                              ),
-                              hintText: "Anywhere . Any wek . Add guests",
-                              hintStyle: TextStyle(
-                                color: Colors.black38,
-                                fontSize: 13,
-                              ),
-                              filled: true,
-                              fillColor: Colors.white,
+                    SizedBox(width: 15),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "  Where to?",
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500,
                             ),
                           ),
-                        ),
-                      ],
+                          SizedBox(
+                            height: 20,
+                            child: TextField(
+                              decoration: InputDecoration(
+                                border: OutlineInputBorder(
+                                  borderSide: BorderSide.none,
+                                ),
+                                hintText: "Anywhere . Any week . Add guests",
+                                hintStyle: TextStyle(
+                                  color: Colors.black38,
+                                  fontSize: 13,
+                                ),
+                                filled: true,
+                                fillColor: Colors.white,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ],
                 ),

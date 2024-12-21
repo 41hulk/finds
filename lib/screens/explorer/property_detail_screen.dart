@@ -11,7 +11,7 @@ class PropertyDetailScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: Text(property.name)),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(19.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

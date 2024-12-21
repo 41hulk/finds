@@ -1,3 +1,5 @@
+import 'package:finds/screens/explorer/display_state.dart';
+import 'package:finds/widgets/search_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../provider/property_provider.dart';
@@ -14,15 +16,22 @@ class _ExplorerScreenState extends State<ExplorerScreen> {
   @override
   void initState() {
     super.initState();
-    // Fetch properties when the screen is initialized
     Provider.of<PropertyProvider>(context, listen: false).fetchProperties();
   }
 
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      // appBar: AppBar(title: const Text('Explorer')),
-      body: SafeArea(child: PropertyList()), // Use the PropertyList widget here
+      body: SafeArea(
+        child: Column(
+          children: [
+            SearchBarAndFilter(),
+            Expanded(
+              child: DisplayState(),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

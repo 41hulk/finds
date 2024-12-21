@@ -19,10 +19,12 @@ class PropertyList extends StatelessWidget {
               return GestureDetector(
                 onTap: () {
                   Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) =>
-                              PropertyDetailScreen(property: property)));
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) =>
+                          PropertyDetailScreen(property: property),
+                    ),
+                  );
                 },
                 child: Card(
                   margin:
