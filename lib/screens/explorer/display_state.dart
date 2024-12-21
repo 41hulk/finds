@@ -23,7 +23,7 @@ class _DisplayStateState extends State<DisplayState> {
               final property = propertyProvider.properties[index];
               return Padding(
                 padding:
-                    const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 19),
                 child: GestureDetector(
                   onTap: () {
                     Navigator.push(
@@ -44,7 +44,11 @@ class _DisplayStateState extends State<DisplayState> {
                                 'https://cdn1.iconfinder.com/data/icons/user-pictures/100/male3-512.png'),
                           ),
                           const SizedBox(width: 8),
-                          Text('@${property.user.username}'),
+                          Text(
+                            '@${property.user.username}',
+                            style: const TextStyle(
+                                fontSize: 19, fontWeight: FontWeight.bold),
+                          ),
                         ],
                       ),
                       const SizedBox(

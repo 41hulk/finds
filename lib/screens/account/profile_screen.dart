@@ -62,54 +62,7 @@ class ProfilePage extends StatelessWidget {
                     const Icon(Icons.arrow_forward_ios)
                   ],
                 ),
-                const SizedBox(height: 10),
-                const Divider(color: Colors.black12),
-                const SizedBox(height: 10),
-                Card(
-                  elevation: 4,
-                  color: Colors.white,
-                  child: Padding(
-                    padding: const EdgeInsets.only(
-                      left: 25,
-                    ),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Text.rich(
-                          TextSpan(
-                            text: "Airbnb your place\n",
-                            style: TextStyle(
-                              height: 2.5,
-                              fontSize: 18,
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold,
-                            ),
-                            children: [
-                              TextSpan(
-                                text:
-                                    "It's simple to get set up and \nstart earning.",
-                                style: TextStyle(
-                                  height: 1.2,
-                                  fontSize: 14,
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.w400,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        const Spacer(),
-                        Image.network(
-                          "https://static.vecteezy.com/system/resources/previews/034/950/530/non_2x/ai-generated-small-house-with-flowers-on-transparent-background-image-png.png",
-                          height: 140,
-                          width: 135,
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 10),
+                const SizedBox(height: 20),
                 const Divider(color: Colors.black12),
                 const SizedBox(height: 15),
                 const Text(
