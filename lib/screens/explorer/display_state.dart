@@ -23,7 +23,7 @@ class _DisplayStateState extends State<DisplayState> {
               final property = propertyProvider.properties[index];
               return Padding(
                 padding:
-                    const EdgeInsets.symmetric(horizontal: 10, vertical: 19),
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 16),
                 child: GestureDetector(
                   onTap: () {
                     Navigator.push(

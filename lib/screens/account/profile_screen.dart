@@ -137,7 +137,7 @@ class ProfilePage extends StatelessWidget {
                 ),
                 const SizedBox(height: 20),
                 const Text(
-                  "Version 24.34 (28004615)",
+                  "Version 0.0.1 (28004615)",
                   style: TextStyle(fontSize: 10),
                 ),
                 const SizedBox(height: 50),
