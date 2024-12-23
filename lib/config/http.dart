@@ -6,7 +6,8 @@ import 'package:http/http.dart' as http;
 
 class NetworHandler {
   // String baseUrl = 'http://localhost:3030';
-  String baseUrl = 'https://finds-bn.onrender.com';
+  String prodBaseUrl = 'https://finds-bn.onrender.com';
+  String baseUrl = 'https://finds-bn-pr-3.onrender.com';
 
   Future get(String url) async {
     String? token = await getToken();
@@ -19,6 +20,7 @@ class NetworHandler {
     if (response.statusCode == 200 || response.statusCode == 201) {
       AppLogger.logInfo(response.body);
     }
+    return response.body;
   }
 
   Future post(String url, Map<String, dynamic> body) async {

@@ -1,14 +1,15 @@
-import 'package:elevarm_ui/elevarm_ui.dart';
 import 'package:finds/config/shared_preferences.dart';
 import 'package:finds/provider/auth_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:top_snackbar_flutter/custom_snack_bar.dart';
 import 'dart:convert';
 
 import 'package:top_snackbar_flutter/top_snack_bar.dart';
 import '../navigation/navigation.dart';
+import 'package:finds/widgets/custom_text_input.dart'; // Import the custom text input
+import 'package:finds/widgets/custom_button.dart'; // Import the custom button
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -44,7 +45,9 @@ class _LoginScreenState extends State<LoginScreen> {
           //go to nav here
           if (mounted) {
             Navigator.of(context).pushReplacement(
-              MaterialPageRoute(builder: (context) => const MainScreen()),
+              MaterialPageRoute(
+                builder: (context) => const MainScreen(),
+              ),
             );
           }
         }
@@ -59,61 +62,135 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
-      body: SafeArea(
-        child: Center(
-          child: SingleChildScrollView(
-            padding: const EdgeInsets.all(16),
-            child: Form(
-              key: _formKey,
-              child: Column(
-                children: [
-                  Text(
-                    'Login !🚀',
-                    style: GoogleFonts.poppins(
-                      fontSize: 24,
-                      fontWeight: FontWeight.w500,
+      backgroundColor: Colors.white,
+      body: SingleChildScrollView(
+        child: SafeArea(
+          bottom: false,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(16),
+                child: Form(
+                  key: _formKey,
+                  child: Column(children: [
+                    SizedBox(
+                      height: size.height * 0.06,
                     ),
-                  ),
-                  const SizedBox(height: 30),
-                  ElevarmTextInputField(
-                    label: 'Username',
-                    hintText: 'guyntare',
-                    controller: _usernameController,
-                  ),
-                  const SizedBox(height: 16),
-                  ElevarmTextInputField(
-                    label: 'Password',
-                    hintText: 'password',
-                    obscureText: true,
-                    controller: _passwordController,
-                  ),
-                  const SizedBox(height: 32),
-                  InkWell(
-                    child: Text(
-                      'You don\'t have an account?, Sign Up',
-                      style: GoogleFonts.poppins(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w400,
-                        color: const Color.fromARGB(255, 74, 77, 80),
+                    const Text(
+                      "Login 🚀",
+                      style: TextStyle(
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
-                    onTap: () {
-                      Navigator.pushReplacementNamed(context, '/signup');
-                    },
-                  ),
-                  const SizedBox(height: 30),
-                  ElevarmOutlineButton.text(
-                    text: 'Login',
-                    height: 40,
-                    onPressed: () async {
-                      await signInImpl();
-                    },
-                  ),
-                ],
+                    SizedBox(
+                      height: size.height * 0.06,
+                    ),
+                    CustomTextInput(
+                      label: 'Username',
+                      hintText: 'guyntare',
+                      controller: _usernameController,
+                    ),
+                    const SizedBox(height: 16),
+                    CustomTextInput(
+                      label: 'Password',
+                      hintText: 'password',
+                      obscureText: true,
+                      controller: _passwordController,
+                    ),
+                    const SizedBox(height: 32),
+                    InkWell(
+                      child: const Text(
+                        'You don\'t have an account?, Sign Up',
+                        style: TextStyle(fontSize: 15),
+                      ),
+                      onTap: () {
+                        Navigator.pushReplacementNamed(context, '/signup');
+                      },
+                    ),
+                    const SizedBox(height: 30),
+                    CustomButton(
+                      text: 'Login',
+                      onPressed: () async {
+                        await signInImpl();
+                      },
+                    ),
+                    SizedBox(height: size.height * 0.026),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Container(
+                            height: 1,
+                            color: Colors.black26,
+                          ),
+                        ),
+                        const Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 20),
+                          child: Text(
+                            "or",
+                            style: TextStyle(fontSize: 18),
+                          ),
+                        ),
+                        Expanded(
+                          child: Container(
+                            height: 1,
+                            color: Colors.black26,
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: size.height * 0.015),
+                    InkWell(
+                      onTap: () async {},
+                      child: socialIcons(
+                        size,
+                        FontAwesomeIcons.google,
+                        "Continue with Google",
+                        Colors.pink,
+                        27,
+                      ),
+                    ),
+                  ]),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Padding socialIcons(Size size, icon, name, color, double iconSize) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 1),
+      child: Container(
+        width: size.width,
+        padding: const EdgeInsets.symmetric(vertical: 11),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(12),
+          border: Border.all(),
+        ),
+        child: Row(
+          children: [
+            SizedBox(width: size.width * 0.05),
+            Icon(
+              icon,
+              color: color,
+              size: iconSize,
+            ),
+            SizedBox(width: size.width * 0.18),
+            Text(
+              name,
+              style: const TextStyle(
+                fontSize: 15,
+                fontWeight: FontWeight.w500,
               ),
             ),
-          ),
+            const SizedBox(width: 10),
+          ],
         ),
       ),
     );
