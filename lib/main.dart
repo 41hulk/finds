@@ -36,13 +36,15 @@ class FindsApp extends StatelessWidget {
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
             useMaterial3: true,
             fontFamily: 'Gilroy'),
+        darkTheme: ThemeData.dark(), // standard dark theme
+        themeMode: ThemeMode.system,
         routes: {
           '/signup': (context) => const SignUpScreen(),
           '/login': (context) => const LoginScreen(),
           '/sensor': (context) => const SensorDisplay(),
         },
         home: FlutterSplashScreen.fadeIn(
-          nextScreen: const LoginScreen(),
+          nextScreen: const SensorDisplay(),
           duration: const Duration(milliseconds: 4000),
           backgroundColor: Colors.white,
           childWidget: const Center(

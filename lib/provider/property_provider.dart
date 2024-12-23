@@ -6,9 +6,12 @@ import '../models/property.dart';
 class PropertyProvider with ChangeNotifier {
   NetworHandler networHandler = NetworHandler();
   List<Property> _properties = [];
+  List<Property> _myProperties = [];
   bool _isLoading = false;
 
   List<Property> get properties => _properties;
+  List<Property> get myProperties => _myProperties;
+
   bool get isLoading => _isLoading;
 
   Future<void> fetchProperties() async {
@@ -27,32 +30,26 @@ class PropertyProvider with ChangeNotifier {
     }
   }
 
+  Future<void> getMyProperties() async {
+    _isLoading = true;
+
+    try {
+      final response = await networHandler.get('/property/myproperty');
+      final List<dynamic> data = json.decode(response);
+      _myProperties = data.map((json) => Property.fromJson(json)).toList();
+    } catch (e) {
+      throw Exception('Failed to load my properties: $e');
+    } finally {
+      _isLoading = false;
+      notifyListeners();
+    }
+  }
+
   Future<void> createProperty(Property property) async {
     try {
-      // final response = await http.post(
-      //   Uri.parse(
-      //       'https://api.example.com/properties'), // Replace with your API URL
-      //   headers: {'Content-Type': 'application/json'},
-      //   body: json.encode({
-      //     'userId': property.userId,
-      //     'name': property.name,
-      //     'description': property.description,
-      //     'images': property.images,
-      //     'pricePerNight': property.pricePerNight,
-      //     'address': property.address,
-      //     'created_at': property.created_at.toIso8601String(),
-      //     'updated_at': property.updated_at.toIso8601String(),
-      //   }),
-      // );
-
-      // if (response.statusCode == 201) {
-      //   // Optionally, fetch properties again to update the list
-      //   await fetchProperties();
-      // } else {
-      //   throw Exception('Failed to create property');
-      // }
+      // Implementation for creating a property
     } catch (e) {
-      throw Exception('Failed to create property');
+      throw Exception('Failed to create property: $e');
     }
   }
 }

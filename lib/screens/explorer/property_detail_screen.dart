@@ -1,3 +1,4 @@
+import 'package:finds/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import '../../models/property.dart';
 
@@ -41,6 +42,10 @@ class PropertyDetailScreen extends StatelessWidget {
             Text('Address: ${property.address}'),
             const SizedBox(height: 8),
             Text('Owner Id: ${property.user.id}'),
+            const SizedBox(
+              height: 8,
+            ),
+            CustomButton(text: "Book Now", onPressed: () {})
             // const SizedBox(height: 8),
             // Text('Avatar: ${property.user.avatar}'),
           ],

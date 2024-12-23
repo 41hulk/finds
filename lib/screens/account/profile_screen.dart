@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
@@ -164,7 +165,7 @@ class ProfilePage extends StatelessWidget {
               const SizedBox(width: 20),
               Text(
                 name,
-                style: const TextStyle(fontSize: 17),
+                style: const TextStyle(fontSize: 15),
               ),
               const Spacer(),
               const Icon(Icons.arrow_forward_ios)
