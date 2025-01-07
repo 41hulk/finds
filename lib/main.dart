@@ -18,6 +18,9 @@ void main() async {
   );
 }
 
+//TODO: make better the use of the explorer
+//TODO: improve detail screen
+
 class FindsApp extends StatelessWidget {
   const FindsApp({super.key});
 
@@ -44,7 +47,7 @@ class FindsApp extends StatelessWidget {
           '/sensor': (context) => const SensorDisplay(),
         },
         home: FlutterSplashScreen.fadeIn(
-          nextScreen: const SensorDisplay(),
+          nextScreen: const LoginScreen(),
           duration: const Duration(milliseconds: 4000),
           backgroundColor: Colors.white,
           childWidget: const Center(
