@@ -41,11 +41,14 @@ dependencies:
   sqflite: ^2.3.3+1
   path: ^1.9.0
   google_fonts: ^6.2.1
-  elevarm_ui: ^0.10.8
   http: ^1.2.2
   shared_preferences: ^2.3.3
   top_snackbar_flutter: ^3.1.0
-
+  connectivity_plus: ^2.0.2
+  fluttertoast: ^8.0.9
+  sensors_plus: ^3.0.0
+  font_awesome_flutter: ^10.8.0
+  another_carousel_pro: ^1.0.2
 
 
 flutter_launcher_icons:
@@ -53,8 +56,6 @@ flutter_launcher_icons:
   ios: true
   image_path: "assets/images/icon1.jpg"
   min_sdk_android: 21
-
-
 
 dev_dependencies:
   flutter_test:
@@ -81,17 +82,15 @@ flutter:
   assets:
     - assets/images/
 
-  # An image asset can refer to one or more resolution-specific "variants", see
-  # https://flutter.dev/to/resolution-aware-images
+  fonts:
+      - family: Gilroy
+        fonts:
+          - asset: assets/fonts/Gilroy-Bold.ttf
+          - asset: assets/fonts/Gilroy-Medium.ttf
+          - asset: assets/fonts/Gilroy-MediumItalic.ttf
+          - asset: assets/fonts/Gilroy-SemiBold.ttf
+          - asset: assets/fonts/HVAnalogueBold.ttf
 
-  # For details regarding adding assets from package dependencies, see
-  # https://flutter.dev/to/asset-from-package
-
-  # To add custom fonts to your application, add a fonts section here,
-  # in this "flutter" section. Each entry in this list should have a
-  # "family" key with the font family name, and a "fonts" key with a
-  # list giving the asset and other descriptors for the font. For
-  # example:
   # fonts:
   #   - family: Schyler
   #     fonts:

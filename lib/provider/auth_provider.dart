@@ -15,7 +15,7 @@ class AuthProvider with ChangeNotifier {
     required String username,
     required String email,
     required String password,
-    required String nationality,
+
     // required UserModel data
   }) async {
     try {
@@ -24,7 +24,6 @@ class AuthProvider with ChangeNotifier {
         username: username,
         email: email,
         password: password,
-        nationality: nationality,
       );
 
       var res = await networHandler.post('/auth/register', _user!.toJson());

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../explorer/explorer_screen.dart';
 import '../listings/listings_screen.dart';
 import '../favorites/favorites_screen.dart';
-import '../account/account_screen.dart';
+import '../account/profile_screen.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -18,7 +18,7 @@ class _MainScreenState extends State<MainScreen> {
     const ExplorerScreen(),
     const ListingsScreen(),
     const FavoritesScreen(),
-    const AccountScreen(),
+    const ProfilePage(),
   ];
 
   void _onItemTapped(int index) {
@@ -50,7 +50,7 @@ class _MainScreenState extends State<MainScreen> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
-            label: 'Account',
+            label: 'Profile',
           ),
         ],
       ),
